@@ -8,11 +8,12 @@ const SelectSubject = () => {
 
   useEffect(() => {
     const fetchSubjects = async () => {
-      const token = localStorage.getItem('token'); 
-      if (!token) {
-        setError('No hay token encontrado');
-        navigate('/login');
-      }
+        const token = localStorage.getItem('token');
+    
+        if (!token) {
+          navigate('/login');
+          throw new Error('No se encontró token de autenticación');
+        }
 
       try {
         const response = await fetch('http://localhost:3000/getSubjects', {

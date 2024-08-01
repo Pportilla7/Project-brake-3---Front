@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {jwtDecode} from 'jwt-decode';
+import Navbar from './navbar';
 
 const Home = () => {
   const [user, setUser] = useState(null);
@@ -8,7 +9,12 @@ const Home = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-
+    
+    if (!token) {
+      navigate('/login');
+      throw new Error('No se encontró token de autenticación');
+    }
+    
     if (token) {
         try {
           const decodedToken = jwtDecode(token);
@@ -33,6 +39,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
+      <Navbar />
       <h1>Bienvenido, {user.email}</h1> {/* Assuming user object has a name property */}
       <div className="buttons-container">
         <button onClick={handleCreateEvent}>Crear Evento</button>

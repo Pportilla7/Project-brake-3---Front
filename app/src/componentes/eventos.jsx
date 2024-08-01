@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Evento from './evento.jsx';
 import { useNavigate } from 'react-router-dom';
+import Navbar from './navbar';
 
 const Eventos = () => {
   const [eventos, setEventos] = useState([]);
@@ -13,7 +14,7 @@ const Eventos = () => {
     
     if (!token) {
       navigate('/login');
-      return;
+      throw new Error('No se encontró token de autenticación');
     }
 
     const fetchEventos = async () => {
@@ -112,6 +113,7 @@ const Eventos = () => {
 
   return (
     <div>
+      <Navbar />
       <h1>Todos los Eventos</h1>
       {eventos.map((evento) => (
         <Evento 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {jwtDecode} from 'jwt-decode';
+import Navbar from './navbar';
 
 const CrearEvento = () => {
   const [aulas, setAulas] = useState([]);
@@ -15,9 +16,10 @@ const CrearEvento = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
+    
     if (!token) {
       navigate('/login');
-      return;
+      throw new Error('No se encontró token de autenticación');
     }
 
     const fetchAulas = async () => {
@@ -69,7 +71,7 @@ const CrearEvento = () => {
       if (data.esOcupada) {
         setError('El aula no está disponible en la fecha y hora seleccionadas.');
       } else {
-        console.log('Aula ocupada');
+        console.log('Aula libre');
         handleCreateEvent();
       }
     } catch (error) {
@@ -141,6 +143,7 @@ const CrearEvento = () => {
 
   return (
     <div>
+      <Navbar />
       <h1>Crear Evento para {selectedSubject.nombre}</h1>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <p><strong>Código:</strong> {selectedSubject.codigo}</p>
@@ -149,7 +152,7 @@ const CrearEvento = () => {
 
       <form onSubmit={(e) => {
         e.preventDefault();
-        handleCreateEvent();
+        checkAulaDisponibilidad();
       }}>
         <div>
           <label>
@@ -179,7 +182,7 @@ const CrearEvento = () => {
             Tipo:
             <select value={tipo} onChange={(e) => setTipo(e.target.value)} required>
               <option value="">Seleccione un tipo</option>
-              <option value="aula">Aula</option>
+              <option value="clase">Clase</option>
               <option value="laboratorio">Laboratorio</option>
               <option value="examen">Examen</option>
             </select>

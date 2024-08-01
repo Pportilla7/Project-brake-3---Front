@@ -10,10 +10,10 @@ const Evento = ({evento, eventos, setEventos}) => {
 
     useEffect(()=>{
         const token = localStorage.getItem('token');
-        
+    
         if (!token) {
             navigate('/login');
-            return;
+            throw new Error('No se encontró token de autenticación');
         }
 
         const decodedToken=jwtDecode(token);
@@ -26,7 +26,8 @@ const Evento = ({evento, eventos, setEventos}) => {
     }, [evento.profesor.id, navigate]);
 
     const handleActualizar = () => {
-        navigate(`/updateEevento/${evento.id}`);
+        console.log(evento);
+        navigate(`/actualizaEvento`, {state:{evento}});
     };
     
     const handleBorrar = async () => {
@@ -46,7 +47,7 @@ const Evento = ({evento, eventos, setEventos}) => {
             throw new Error('Fallo al borrar un evento');
           }
           console.log('Evento eliminado con éxito');
-          const nuevoEventos=eventos.filter(e=>e.id!=evento.id);
+          const nuevoEventos=eventos.filter(e=>e.id!==evento.id);
           setEventos(nuevoEventos);
           alert('Evento borrado con exito');
         } 
