@@ -7,7 +7,7 @@ const FormularioAct = () => {
   const navigate = useNavigate();
   const { evento } = location.state || {};
 
-  // Formatear la fecha para el campo datetime-local
+  
   const formatDateTime = (datetime) => {
     const date = new Date(datetime);
     const offset = date.getTimezoneOffset();

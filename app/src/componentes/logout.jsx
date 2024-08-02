@@ -8,7 +8,7 @@ function Logout() {
     
     localStorage.removeItem('token');
 
-    navigate('/login');
+    navigate('/');
   }, [navigate]);
 
   return null;  

@@ -127,7 +127,7 @@ const CrearEvento = () => {
       }
 
       alert('Evento creado con éxito');
-      navigate('/success');
+      navigate('/mostrarEventos');
     } catch (error) {
       setError('Error creando el evento: ' + error.message);
     }

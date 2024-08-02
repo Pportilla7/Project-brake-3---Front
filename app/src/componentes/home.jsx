@@ -11,8 +11,7 @@ const Home = () => {
     const token = localStorage.getItem('token');
     
     if (!token) {
-      navigate('/login');
-      throw new Error('No se encontró token de autenticación');
+      navigate('/');      
     }
     
     if (token) {
