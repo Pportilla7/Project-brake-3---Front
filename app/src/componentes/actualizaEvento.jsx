@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from './navbar';
+import '../css/crearevento.css'
 
 const FormularioAct = () => {
   const location = useLocation();
@@ -258,7 +259,7 @@ const FormularioAct = () => {
   };
 
   return (
-    <div >
+    <div className='container'>
         <Navbar />
         <form onSubmit={handleSubmit}>
         <h2>Actualizar Evento</h2>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {jwtDecode} from 'jwt-decode';
 import Navbar from './navbar';
+import '../css/crearevento.css';
 
 const CrearEvento = () => {
   const [aulas, setAulas] = useState([]);
@@ -144,52 +145,70 @@ const CrearEvento = () => {
   return (
     <div>
       <Navbar />
-      <h1>Crear Evento para {selectedSubject.nombre}</h1>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <p><strong>Código:</strong> {selectedSubject.codigo}</p>
-      <p><strong>Curso:</strong> {selectedSubject.curso}</p>
-      <p><strong>Grado:</strong> {selectedSubject.grado}</p>
-
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        checkAulaDisponibilidad();
-      }}>
-        <div>
-          <label>
-            Aula:
-            <select value={aulaSeleccionada} onChange={(e) => setAulaSeleccionada(e.target.value)} required>
-              <option value="">Seleccione un aula</option>
-              {aulas.map((aula) => (
-                <option key={aula} value={aula}>{aula}</option>
-              ))}
-            </select>
-          </label>
-        </div>
-        <div>
-          <label>
-            Día:
-            <input type="date" value={dia} onChange={(e) => setDia(e.target.value)} required />
-          </label>
-        </div>
-        <div>
-          <label>
-            Hora:
-            <input type="time" value={hora} onChange={(e) => setHora(e.target.value)} required />
-          </label>
-        </div>
-        <div>
-          <label>
-            Tipo:
-            <select value={tipo} onChange={(e) => setTipo(e.target.value)} required>
-              <option value="">Seleccione un tipo</option>
-              <option value="clase">Clase</option>
-              <option value="laboratorio">Laboratorio</option>
-              <option value="examen">Examen</option>
-            </select>
-          </label>
-        </div>
-        <button type="submit">Crear Evento</button>
-      </form>
+    <div className="container">
+      <div className="form-container">
+        <h1>Crear Evento para {selectedSubject.nombre}</h1>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <form onSubmit={(e) => {
+          e.preventDefault();
+          checkAulaDisponibilidad();
+        }}>
+          <div className="form-item">
+            <label>
+              Código:
+              <span>{selectedSubject.codigo}</span>
+            </label>
+          </div>
+          <div className="form-item">
+            <label>
+              Curso:
+              <span>{selectedSubject.curso}</span>
+            </label>
+          </div>
+          <div className="form-item">
+            <label>
+              Grado:
+              <span>{selectedSubject.grado}</span>
+            </label>
+          </div>
+          <div className="form-item">
+            <label>
+              Aula:
+              <select value={aulaSeleccionada} onChange={(e) => setAulaSeleccionada(e.target.value)} required>
+                <option value="">Seleccione un aula</option>
+                {aulas.map((aula) => (
+                  <option key={aula} value={aula}>{aula}</option>
+                ))}
+              </select>
+            </label>
+          </div>
+          <div className="form-item">
+            <label>
+              Día:
+              <input type="date" value={dia} onChange={(e) => setDia(e.target.value)} required />
+            </label>
+          </div>
+          <div className="form-item">
+            <label>
+              Hora:
+              <input type="time" value={hora} onChange={(e) => setHora(e.target.value)} required />
+            </label>
+          </div>
+          <div className="form-item">
+            <label>
+              Tipo:
+              <select value={tipo} onChange={(e) => setTipo(e.target.value)} required>
+                <option value="">Seleccione un tipo</option>
+                <option value="clase">Clase</option>
+                <option value="laboratorio">Laboratorio</option>
+                <option value="examen">Examen</option>
+              </select>
+            </label>
+          </div>
+          <button type="submit">Crear Evento</button>
+        </form>
+      </div>
+    </div>
     </div>
   );
 };

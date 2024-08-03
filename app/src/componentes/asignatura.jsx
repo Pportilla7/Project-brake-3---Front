@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../css/asignatura.css'
 
 const SelectSubject = () => {
   const [subjects, setSubjects] = useState([]);
@@ -46,25 +47,25 @@ const SelectSubject = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Seleccione una Asignatura</h1>
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <table>
         <thead>
           <tr>
-            <th style={{ border: '1px solid black', padding: '8px' }}>Código</th>
-            <th style={{ border: '1px solid black', padding: '8px' }}>Nombre</th>
-            <th style={{ border: '1px solid black', padding: '8px' }}>Curso</th>
-            <th style={{ border: '1px solid black', padding: '8px' }}>Grado</th>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Curso</th>
+            <th>Grado</th>
           </tr>
         </thead>
         <tbody>
           {subjects.map((subject) => (
             <tr key={subject.codigo} onClick={() => handleSubjectClick(subject)} style={{ cursor: 'pointer' }}>
-              <td style={{ border: '1px solid black', padding: '8px' }}>{subject.codigo}</td>
-              <td style={{ border: '1px solid black', padding: '8px' }}>{subject.nombre}</td>
-              <td style={{ border: '1px solid black', padding: '8px' }}>{subject.curso}</td>
-              <td style={{ border: '1px solid black', padding: '8px' }}>{subject.grado}</td>
+              <td>{subject.codigo}</td>
+              <td>{subject.nombre}</td>
+              <td>{subject.curso}</td>
+              <td>{subject.grado}</td>
             </tr>
           ))}
         </tbody>

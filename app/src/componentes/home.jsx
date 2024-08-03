@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {jwtDecode} from 'jwt-decode';
 import Navbar from './navbar';
+import '../css/home.css'
 
 const Home = () => {
   const [user, setUser] = useState(null);
@@ -37,14 +38,18 @@ const Home = () => {
   }
 
   return (
-    <div className="home-container">
+    <div>
       <Navbar />
+      <div className="home-container">
+      
       <h1>Bienvenido, {user.email}</h1> {/* Assuming user object has a name property */}
       <div className="buttons-container">
         <button onClick={handleCreateEvent}>Crear Evento</button>
         <button onClick={handleSearchEvent}>Buscar Evento</button>
       </div>
+      </div>
     </div>
+    
   );
 };
 

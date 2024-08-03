@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px; /* Esto asegura un margen alrededor del contenido */
+    padding: 20px;
+    width: auto; /* Esto ajusta el ancho automáticamente basado en el contenido */
+    max-width: 95%; /* Esto previene que el contenido llegue a los bordes */
+}
+
+table {
+    width: 100%; /* Asegura que la tabla use todo el ancho disponible del contenedor */
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center; /* Centra el texto dentro de las celdas */
+}
+
+thead {
+    background-color: #f2f2f2; /* Color de fondo para el encabezado de la tabla */
+}

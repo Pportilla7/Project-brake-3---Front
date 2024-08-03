@@ -7,6 +7,7 @@ import Asignaturas from './componentes/asignatura.jsx';
 import Eventos from './componentes/eventos.jsx';
 import FormularioAct from './componentes/actualizaEvento.jsx';
 import CerrarSesion from './componentes/logout.jsx';
+import "./css/base.css";
 
 const AppRoutes = () => {
   return (

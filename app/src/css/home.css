@@ -1,0 +1,32 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px); /* Ajusta esto al tamaño de tu navbar si es necesario */
+    text-align: center;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row; /* Cambio aquí para que los botones estén lado a lado */
+    gap: 20px; /* Espacio entre los botones */
+}
+
+.buttons-container button {
+    padding: 10px 20px;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Colores específicos para cada botón, ajusta según necesites */
+.buttons-container button:nth-child(1) {
+    background-color: #007BFF; /* Azul */
+}
+
+.buttons-container button:nth-child(2) {
+    background-color: #28A745; /* Verde */
+}

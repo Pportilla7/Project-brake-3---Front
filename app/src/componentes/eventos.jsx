@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Evento from './evento.jsx';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Navbar from './navbar';
+import '../css/eventos.css'
 
 const Eventos = () => {
   const [eventos, setEventos] = useState([]);
@@ -184,18 +185,23 @@ const Eventos = () => {
   }
 
   return (
-    <div>
-      <Navbar />
-      <h1>Todos los Eventos</h1>
-      {eventos.map((evento) => (
-        <Evento 
-            key={evento.id} 
-            evento={evento} 
-            eventos={eventos}
-            setEventos={setEventos} 
-        />
-      ))}
+    <div className="container-principal">
+    <Navbar />
+    <div className="container">
+      <h1 className="title">Todos los Eventos</h1>
+      <div className="event-list">
+        {eventos.map((evento) => (
+          <Evento 
+              key={evento.id} 
+              evento={evento} 
+              eventos={eventos}
+              setEventos={setEventos}
+          />
+        ))}
+      </div>
     </div>
+  </div>
+
   );
 };
 

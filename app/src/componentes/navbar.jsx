@@ -23,7 +23,7 @@ function Navbar() {
         <li><Link to="/asignaturas">Crear Evento</Link></li>
         <li><Link to="/mostrarEventos">Mostrar Eventos</Link></li>
         <Link to={{pathname:"/mostrarEventos", search: `?userId=${userId}`}}>
-            Actualizar/Eliminar Mis Eventos
+            Mis Eventos
           </Link>
         <li><Link to="/logout">Cerrar sesion</Link></li>
       </ul>
